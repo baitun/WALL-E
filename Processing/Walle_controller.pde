@@ -2,18 +2,19 @@
 
 import processing.serial.*;
 
+//key codes
 final int PAGE_UP=33;
 final int PAGE_DOWN=34;
 final int HOME=36;
 final int END=35;
 
 Serial myPort;
-int angle=90;
+int angle=90; //initial angle
 
 void setup(){
   size(640,480);
   printArray(Serial.list());
-  String portName = Serial.list()[0];
+  String portName = Serial.list()[0];//change this to your port
   myPort = new Serial(this, portName, 9600);
   myPort.write(angle);
   textSize(64);
@@ -30,7 +31,6 @@ void draw(){
 
 void keyPressed() {
   if(key==CODED) {
-    println(keyCode);
     switch(keyCode){
       case LEFT: angle--; break;
       case RIGHT: angle++; break;
